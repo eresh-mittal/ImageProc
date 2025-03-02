@@ -1,0 +1,115 @@
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2025-03-02T04:04:48.188Z",
+    "__export_source": "insomnia.desktop.app:v9.3.3",
+    "resources": [
+        {
+            "_id": "req_bf19d27401474e439249ddbd50479f96",
+            "parentId": "wrk_4bbf3e5fa2014163905a12b8cddb00ea",
+            "modified": 1740849506143,
+            "created": 1740741207512,
+            "url": "http://0.0.0.0:8000/api/status/e5f74eb1-1943-4213-a322-f4e347b69291",
+            "name": "status",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/9.3.3"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1740741207512,
+            "isPrivate": false,
+            "pathParameters": [],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "wrk_4bbf3e5fa2014163905a12b8cddb00ea",
+            "parentId": null,
+            "modified": 1724053361723,
+            "created": 1724053361723,
+            "name": "node api",
+            "description": "",
+            "scope": "collection",
+            "_type": "workspace"
+        },
+        {
+            "_id": "req_e21f1f2275bc45ebae6339345d470741",
+            "parentId": "wrk_4bbf3e5fa2014163905a12b8cddb00ea",
+            "modified": 1740849470973,
+            "created": 1740740418568,
+            "url": "http://0.0.0.0:8000/api/upload",
+            "name": "uplaod",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "multipart/form-data",
+                "params": [
+                    {
+                        "id": "pair_29d2ce8252ce4a2d8b66462cabe04689",
+                        "name": "csvFile",
+                        "value": "",
+                        "description": "",
+                        "disabled": false,
+                        "type": "file",
+                        "fileName": "/home/eresh/Documents/ImageProc/sample_csv.csv"
+                    }
+                ]
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "multipart/form-data"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/9.3.3"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1740740418568,
+            "isPrivate": false,
+            "pathParameters": [],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "env_a42497b497ff49c388caf57ba1ee30c1c6d4e344",
+            "parentId": "wrk_4bbf3e5fa2014163905a12b8cddb00ea",
+            "modified": 1724053361725,
+            "created": 1724053361725,
+            "name": "Base Environment",
+            "data": {},
+            "dataPropertyOrder": null,
+            "color": null,
+            "isPrivate": false,
+            "metaSortKey": 1724053361725,
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_a42497b497ff49c388caf57ba1ee30c1c6d4e344",
+            "parentId": "wrk_4bbf3e5fa2014163905a12b8cddb00ea",
+            "modified": 1724053361726,
+            "created": 1724053361726,
+            "name": "Default Jar",
+            "cookies": [],
+            "_type": "cookie_jar"
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+flowchart TB
+    subgraph "Client Applications"
+        Client["Client\n(Web Browser/App)"]
+    end
+
+    subgraph "API Layer"
+        FastAPI["FastAPI Application\n(app.py)"]
+    end
+
+    subgraph "Background Processing"
+        Celery["Celery Workers\n(tasks.py)"]
+    end
+
+    subgraph "Data Storage"
+        PostgreSQL["PostgreSQL Database\n(Product & Request Data)"]
+        FileSystem["File System\n(CSV & Image Storage)"]
+    end
+
+    subgraph "Infrastructure"
+        Redis["Redis\n(Message Broker)"]
+    end
+
+    Client -->|"1. Upload CSV\n(POST /api/upload)"| FastAPI
+    Client -->|"4. Check Status\n(GET /api/status/{request_id})"| FastAPI
+    FastAPI -->|"2. Store Request\nMetadata"| PostgreSQL
+    FastAPI -->|"3. Queue\nProcessing Task"| Redis
+    Redis -->|"5. Dispatch Task"| Celery
+    Celery -->|"6. Process Files"| FileSystem
+    Celery -->|"7. Update Status"| PostgreSQL
+    Celery -->|"8. Optional Webhook\nCallback"| Client
+    FastAPI -->|"9. Return Status\nand Results"| Client

@@ -1,0 +1,38 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - PORT=5000
+      - DATABASE_URL=sqlite:///data/image_processor.db
+    volumes:
+      - ./uploads:/app/uploads
+      - ./outputs:/app/outputs
+      - ./data:/app/data
+      - ./processed_images:/app/processed_images
+    depends_on:
+      - redis
+    restart: always
+    command: uvicorn app:app --host 0.0.0.0 --port 5000
+
+  worker:
+    build: .
+    command: celery -A tasks worker --loglevel=info
+    environment:
+      - DATABASE_URL=sqlite:///data/image_processor.db
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - ./uploads:/app/uploads
+      - ./outputs:/app/outputs
+      - ./data:/app/data
+      - ./processed_images:/app/processed_images
+    depends_on:
+      - redis
+    restart: always
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
